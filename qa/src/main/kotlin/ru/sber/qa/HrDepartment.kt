@@ -11,7 +11,7 @@ import java.util.LinkedList
 object HrDepartment {
     var clock = Clock.systemUTC()
     private val incomeBox: LinkedList<CertificateRequest> = LinkedList()
-    private val outcomeOutcome: LinkedList<Certificate> = LinkedList()
+    private val outcomeBox: LinkedList<Certificate> = LinkedList()
 
     /**
      * Получение запроса на изготовление справки.
@@ -36,6 +36,6 @@ object HrDepartment {
     fun processNextRequest(hrEmployeeNumber: Long) {
         val certificateRequest = incomeBox.poll()
         val certificate = certificateRequest.process(hrEmployeeNumber)
-        outcomeOutcome.push(certificate)
+        outcomeBox.push(certificate)
     }
 }
