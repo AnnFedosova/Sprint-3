@@ -29,6 +29,23 @@ internal class HrDepartmentTest {
         private val SUNDAY_LOCAL_DATE = LocalDate.of(2023, 10, 8)
         private val MONDAY_LOCAL_DATE = LocalDate.of(2023, 10, 9)
         private val TUESDAY_LOCAL_DATE = LocalDate.of(2023, 10, 10)
+
+        @JvmStatic
+        fun weekendDayProvider(): Stream<Arguments> {
+            return Stream.of(
+                Arguments.of(SATURDAY_LOCAL_DATE),
+                Arguments.of(SUNDAY_LOCAL_DATE)
+            )
+        }
+
+        @JvmStatic
+        fun notAllowReceiveRequestProvider(): Stream<Arguments> {
+            return Stream.of(
+                Arguments.of(TUESDAY_LOCAL_DATE, CertificateType.NDFL),
+                Arguments.of(MONDAY_LOCAL_DATE, CertificateType.LABOUR_BOOK)
+            )
+        }
+
     }
 
     private var sut: HrDepartment = HrDepartment
